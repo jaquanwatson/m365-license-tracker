@@ -12,11 +12,11 @@
 
 </div>
 
-## 📊 Overview
+## Overview
 
 Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyzing, and optimizing your organization's M365 license usage. With real-time dashboards, cost analytics, and automated reporting, this tool helps IT administrators identify potential savings of up to 15% on licensing costs while ensuring optimal resource allocation.
 
-### 🌟 Key Benefits
+### Key Benefits
 
 - **Reduce Licensing Costs**: Identify unused or underutilized licenses
 - **Optimize Resource Allocation**: Ensure the right licenses for the right users
@@ -24,12 +24,12 @@ Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyz
 - **Automate Compliance**: Track license assignments and usage patterns
 - **Data-Driven Decisions**: Make informed licensing decisions based on actual usage
 
-## ✨ Features
+## Features
 
 <table>
   <tr>
     <td width="50%">
-      <h3>📈 Real-time Dashboard</h3>
+      <h3>Real-time Dashboard</h3>
       <ul>
         <li>Interactive usage visualizations</li>
         <li>License allocation breakdowns</li>
@@ -38,7 +38,7 @@ Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyz
       </ul>
     </td>
     <td width="50%">
-      <h3>💰 Cost Optimization</h3>
+      <h3>Cost Optimization</h3>
       <ul>
         <li>Unused license identification</li>
         <li>Potential savings calculator</li>
@@ -49,7 +49,7 @@ Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyz
   </tr>
   <tr>
     <td>
-      <h3>📱 Multi-tenant Support</h3>
+      <h3>Multi-tenant Support</h3>
       <ul>
         <li>Manage multiple M365 tenants</li>
         <li>Cross-tenant reporting</li>
@@ -58,7 +58,7 @@ Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyz
       </ul>
     </td>
     <td>
-      <h3>📬 Automated Reporting</h3>
+      <h3>Automated Reporting</h3>
       <ul>
         <li>Scheduled email reports</li>
         <li>Teams channel notifications</li>
@@ -69,7 +69,7 @@ Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyz
   </tr>
 </table>
 
-## 🖼️ Screenshots & Demo
+## Screenshots & Demo
 
 <div align="center">
 
@@ -85,7 +85,7 @@ Microsoft 365 License Tracker is a comprehensive solution for monitoring, analyz
 
 </div>
 
-## 🛠️ Technical Architecture
+## Technical Architecture
 
 ```mermaid
 graph TD
@@ -114,7 +114,7 @@ graph TD
     end
 ```
 
-## 📋 Prerequisites
+## Prerequisites
 
 - Python 3.8 or higher
 - Microsoft Graph API permissions:
@@ -123,7 +123,7 @@ graph TD
   - `Directory.Read.All`
 - Web server for hosting (optional)
 
-## 🚀 Installation & Setup
+## Installation & Setup
 
 ### Quick Setup
 
@@ -166,7 +166,7 @@ az container create \
   --ports 5000
 ```
 
-## ⚙️ Configuration
+## Configuration
 
 ```json
 {
@@ -192,7 +192,7 @@ az container create \
 }
 ```
 
-## 📊 Dashboard Features
+## Dashboard Features
 
 ### License Overview
 
@@ -215,7 +215,7 @@ az container create \
 - License utilization rates
 - Compliance status
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ```python
 # Get license summary
@@ -231,7 +231,7 @@ GET /api/costs/analysis
 POST /api/reports/generate
 ```
 
-## 📝 Sample Reports
+## Sample Reports
 
 ### Weekly License Report
 
@@ -257,7 +257,7 @@ Recommendations:
 - Review Project Plan 3 assignments
 ```
 
-## 🔒 Security & Compliance
+## Security & Compliance
 
 - **Secure Authentication**: Uses Azure AD app registration
 - **Least Privilege**: Minimal required permissions
@@ -265,7 +265,7 @@ Recommendations:
 - **Audit Logging**: All actions logged for compliance
 - **Encryption**: All API communications encrypted
 
-## 🧩 Advanced Features
+## Advanced Features
 
 ### Custom Dashboards
 
@@ -284,7 +284,7 @@ def department_dashboard(department):
 - **Microsoft Teams**: Interactive license reports
 - **Azure Automation**: Scheduled license optimization
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md) for details.
 
@@ -294,11 +294,11 @@ Contributions are welcome! Please read our [Contributing Guide](CONTRIBUTING.md)
 4. Add tests if applicable
 5. Submit a pull request
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 👤 Author & Support
+## Author & Support
 
 **Jaquan Watson** - Cloud & Systems Engineer
 

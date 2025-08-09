@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Jaquan Watson
+    url: mailto:jqwatson96@gmail.com
+    about: Contact the maintainer directly for urgent issues or support requests
+  - name: Documentation
+    url: https://github.com/jaquanwatson/m365-license-tracker#readme
+    about: Check the documentation for usage instructions and configuration details
+  - name: Demo
+    url: https://jaquanwatson.github.io/license-tracker-demo.html
+    about: View the live demo to understand the application's functionality

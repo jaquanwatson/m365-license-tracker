@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M365 License Tracker - Interactive Demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="demo-styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="demo-container">
+        <header class="demo-header">
+            <div class="header-content">
+                <div class="header-text">
+                    <h1><i class="fas fa-chart-line"></i> M365 License Tracker</h1>
+                    <p>Real-time monitoring and analytics for Microsoft 365 license usage optimization</p>
+                </div>
+                <div class="header-actions">
+                    <a href="https://github.com/jaquanwatson/m365-license-tracker" class="github-btn">
+                        <i class="fab fa-github"></i> View Source Code
+                    </a>
+                    <button class="refresh-btn" onclick="refreshData()">
+                        <i class="fas fa-sync-alt"></i> Refresh Data
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="dashboard">
+            <!-- Key Metrics -->
+            <div class="metrics-section">
+                <h2><i class="fas fa-tachometer-alt"></i> Key Metrics</h2>
+                <div class="metrics-grid">
+                    <div class="metric-card primary">
+                        <div class="metric-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Total Licenses</h3>
+                            <div class="metric-number" id="totalLicenses">1,247</div>
+                            <div class="metric-change positive">
+                                <i class="fas fa-arrow-up"></i> +12 this month
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card success">
+                        <div class="metric-icon">
+                            <i class="fas fa-user-check"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Active Users</h3>
+                            <div class="metric-number" id="activeUsers">1,089</div>
+                            <div class="metric-change">87% utilization</div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card warning">
+                        <div class="metric-icon">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Monthly Cost</h3>
+                            <div class="metric-number" id="monthlyCost">$18,705</div>
+                            <div class="metric-change negative">
+                                <i class="fas fa-arrow-down"></i> -$340 saved
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card danger">
+                        <div class="metric-icon">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="metric-content">
+                            <h3>Unused Licenses</h3>
+                            <div class="metric-number" id="unusedLicenses">158</div>
+                            <div class="metric-change">$2,370/month waste</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-row">
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-pie-chart"></i> License Distribution</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" onclick="updateChart('licenses', 'doughnut')">Doughnut</button>
+                                <button class="chart-btn" onclick="updateChart('licenses', 'bar')">Bar</button>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="licenseChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-container">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-area"></i> Usage Trend (6 Months)</h3>
+                            <div class="chart-controls">
+                                <button class="chart-btn active" onclick="updateTrendPeriod('6m')">6M</button>
+                                <button class="chart-btn" onclick="updateTrendPeriod('3m')">3M</button>
+                                <button class="chart-btn" onclick="updateTrendPeriod('1m')">1M</button>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="trendChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-row">
+                    <div class="chart-container full-width">
+                        <div class="chart-header">
+                            <h3><i class="fas fa-chart-bar"></i> Department License Usage</h3>
+                            <div class="chart-controls">
+                                <select id="departmentFilter" onchange="updateDepartmentChart()">
+                                    <option value="all">All Departments</option>
+                                    <option value="it">IT Department</option>
+                                    <option value="sales">Sales</option>
+                                    <option value="marketing">Marketing</option>
+                                    <option value="hr">Human Resources</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="departmentChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cost Analysis -->
+            <div class="cost-analysis-section">
+                <h2><i class="fas fa-calculator"></i> Cost Analysis & Optimization</h2>
+                <div class="cost-grid">
+                    <div class="cost-card">
+                        <h3>Potential Monthly Savings</h3>
+                        <div class="cost-amount savings">$2,370</div>
+                        <div class="cost-breakdown">
+                            <div class="breakdown-item">
+                                <span>Unused Power BI Pro</span>
+                                <span>$450</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Inactive Project licenses</span>
+                                <span>$960</span>
+                            </div>
+                            <div class="breakdown-item">
+                                <span>Redundant E5 licenses</span>
+                                <span>$960</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cost-card">
+                        <h3>Annual Cost Projection</h3>
+                        <div class="cost-amount projection">$224,460</div>
+                        <div class="projection-chart">
+                            <canvas id="projectionChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="cost-card">
+                        <h3>Top Cost Centers</h3>
+                        <div class="cost-list">
+                            <div class="cost-item">
+                                <div class="cost-info">
+                                    <span class="cost-name">Office 365 E5</span>
+                                    <span class="cost-count">280 licenses</span>
+                                </div>
+                                <span class="cost-value">$8,400/mo</span>
+                            </div>
+                            <div class="cost-item">
+                                <div class="cost-info">
+                                    <span class="cost-name">Office 365 E3</span>
+                                    <span class="cost-count">450 licenses</span>
+                                </div>
+                                <span class="cost-value">$6,750/mo</span>
+                            </div>
+                            <div class="cost-item">
+                                <div class="cost-info">
+                                    <span class="cost-name">Teams Premium</span>
+                                    <span class="cost-count">200 licenses</span>
+                                </div>
+                                <span class="cost-value">$2,000/mo</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Activity Table -->
+            <div class="activity-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-history"></i> Recent License Activity</h2>
+                    <div class="activity-filters">
+                        <button class="filter-btn active" onclick="filterActivity('all')">All</button>
+                        <button class="filter-btn" onclick="filterActivity('assigned')">Assigned</button>
+                        <button class="filter-btn" onclick="filterActivity('removed')">Removed</button>
+                        <button class="filter-btn" onclick="filterActivity('upgraded')">Upgraded</button>
+                    </div>
+                </div>
+                
+                <div class="table-container">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th><i class="fas fa-user"></i> User</th>
+                                <th><i class="fas fa-tag"></i> License Type</th>
+                                <th><i class="fas fa-cog"></i> Action</th>
+                                <th><i class="fas fa-calendar"></i> Date</th>
+                                <th><i class="fas fa-dollar-sign"></i> Cost Impact</th>
+                                <th><i class="fas fa-info-circle"></i> Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activityTableBody">
+                            <tr data-action="assigned">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-avatar">JD</div>
+                                        <div>
+                                            <div class="user-name">John Doe</div>
+                                            <div class="user-email">john.doe@company.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="license-badge e3">Office 365 E3</span></td>
+                                <td><span class="action-badge assigned">Assigned</span></td>
+                                <td>2025-01-15</td>
+                                <td class="cost-impact positive">+$15/month</td>
+                                <td><span class="status-badge active">Active</span></td>
+                            </tr>
+                            <tr data-action="removed">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-avatar">JS</div>
+                                        <div>
+                                            <div class="user-name">Jane Smith</div>
+                                            <div class="user-email">jane.smith@company.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="license-badge powerbi">Power BI Pro</span></td>
+                                <td><span class="action-badge removed">Removed</span></td>
+                                <td>2025-01-14</td>
+                                <td class="cost-impact negative">-$10/month</td>
+                                <td><span class="status-badge completed">Completed</span></td>
+                            </tr>
+                            <tr data-action="upgraded">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-avatar">MW</div>
+                                        <div>
+                                            <div class="user-name">Mike Wilson</div>
+                                            <div class="user-email">mike.wilson@company.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="license-badge e5">Office 365 E5</span></td>
+                                <td><span class="action-badge upgraded">Upgraded</span></td>
+                                <td>2025-01-13</td>
+                                <td class="cost-impact positive">+$20/month</td>
+                                <td><span class="status-badge active">Active</span></td>
+                            </tr>
+                            <tr data-action="assigned">
+                                <td>
+                                    <div class="user-info">
+                                        <div class="user-avatar">SB</div>
+                                        <div>
+                                            <div class="user-name">Sarah Brown</div>
+                                            <div class="user-email">sarah.brown@company.com</div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td><span class="license-badge teams">Teams Premium</span></td>
+                                <td><span class="action-badge assigned">Assigned</span></td>
+                                <td>2025-01-12</td>
+                                <td class="cost-impact positive">+$10/month</td>
+                                <td><span class="status-badge pending">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Recommendations -->
+            <div class="recommendations-section">
+                <h2><i class="fas fa-lightbulb"></i> AI-Powered Recommendations</h2>
+                <div class="recommendations-grid">
+                    <div class="recommendation-card high-priority">
+                        <div class="recommendation-header">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <span class="priority-badge high">High Priority</span>
+                        </div>
+                        <h3>Remove 45 Unused Power BI Pro Licenses</h3>
+                        <p>These licenses haven't been used in 90+ days. Removing them would save <strong>$450/month</strong>.</p>
+                        <div class="recommendation-actions">
+                            <button class="action-btn primary">Apply Recommendation</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-card medium-priority">
+                        <div class="recommendation-header">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="priority-badge medium">Medium Priority</span>
+                        </div>
+                        <h3>Downgrade 15 E5 to E3 Licenses</h3>
+                        <p>Users not utilizing advanced E5 features. Downgrading would save <strong>$300/month</strong>.</p>
+                        <div class="recommendation-actions">
+                            <button class="action-btn primary">Apply Recommendation</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="recommendation-card low-priority">
+                        <div class="recommendation-header">
+                            <i class="fas fa-check-circle"></i>
+                            <span class="priority-badge low">Low Priority</span>
+                        </div>
+                        <h3>Optimize Project Plan 3 Distribution</h3>
+                        <p>Redistribute 10 unused Project licenses to requesting departments.</p>
+                        <div class="recommendation-actions">
+                            <button class="action-btn primary">Apply Recommendation</button>
+                            <button class="action-btn secondary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="demo-footer">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p><strong>M365 License Tracker</strong> - Built by <a href="https://github.com/jaquanwatson">Jaquan Watson</a></p>
+                    <p>This is a demonstration of the license tracking dashboard capabilities.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/jaquanwatson/m365-license-tracker"><i class="fab fa-github"></i> Source Code</a>
+                    <a href="https://linkedin.com/in/jaquanwatson"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="mailto:jqwatson96@gmail.com"><i class="fas fa-envelope"></i> Contact</a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="license-tracker-demo.js"></script>
+</body>
+</html>
